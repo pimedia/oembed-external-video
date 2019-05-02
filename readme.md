@@ -1,15 +1,15 @@
 === oEmbed External Video ===
 Contributors: parorrey
-Donate link: http://www.parorrey.com
-Tags: oEmbed, html5, video, mp4, external video 
+Donate link: <http://www.parorrey.com>
+Tags: oEmbed, html5, video, mp4, external video
 Requires at least: 3.0
-Tested up to: 4.3.1
-Stable tag: 1.2
+Requires PHP: 5.3
+Tested up to: 5.0.0
+Stable tag: 1.5
 License: GPLv2 or later
+License URI: <http://www.gnu.org/licenses/gpl-2.0.html>
 
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
-oEmbed External Video plugin converts any external mp4 url into HTML5 video tag 
+oEmbed External Video plugin converts any external mp4 url into HTML5 video tag
 
 == Description ==
 
@@ -19,38 +19,56 @@ To put any external mp4 video file into a post, page, BuddyPress Activity or Gro
 
 Plugin settings page allows you to change the video player width, height, controls, autoplay, loop and muted options.
 
-For details: http://www.parorrey.com/solutions/oembed-external-video/
+For details: <http://www.parorrey.com/solutions/oembed-external-video/>
 
 == Installation ==
 
-* Upload the full directory to wp-content/plugins
-* Activate plugin Tags Page in plugins administration
-* Now, if you place any external mp4 video file url as separate paragraph into post, page or BuyddyPress Activity, it will be converted into HTML5 video player in the browser.
-* Use 'oEmbed Video' Settings page to change the video player width, height, controls, autoplay, loop and muted options.
+-   Upload the full directory to wp-content/plugins
+-   Activate plugin Tags Page in plugins administration
+-   Now, if you place any external mp4 video file url as separate paragraph into post, page or BuyddyPress Activity, it will be converted into HTML5 video player in the browser.
+-   Use 'oEmbed Video' Settings page to change the video player width, height, controls, autoplay, loop and muted options.
 
 == Screenshots ==
-1. URL to mp4 video file into the post/page
-2. URL to mp4 video file in the BuddyPress Activity feed
-3. mp4 video being displayed in the BuddyPress Activity feed
-4. Plugin settings page
+
+1.  URL to mp4 video file into the post/page
+2.  URL to mp4 video file in the BuddyPress Activity feed
+3.  mp4 video being displayed in the BuddyPress Activity feed
+4.  Plugin settings page
 
 == Changelog ==
 
+= 1.5 =
+
+-   updated for wordpress version 5.0.0
+
+= 1.4 =
+
+-   updated for banners and documentation
+
+= 1.3 =
+
+-   version compatibility check and update
 
 = 1.2 =
-* version compatibility check and update
+
+-   version compatibility check and update
 
 = 1.1 =
-* version compatibility check and update
+
+-   version compatibility check and update
 
 = 1.0 =
-* version compatibility check and update
+
+-   version compatibility check and update
 
 = 0.3 =
-* settings screenshot added
+
+-   settings screenshot added
 
 = 0.2 =
-* tagging
+
+-   tagging
 
 = 0.1 =
-* initial release
+
+-   initial release
