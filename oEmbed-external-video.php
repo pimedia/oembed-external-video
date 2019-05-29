@@ -3,13 +3,19 @@
 Plugin Name: oEmbed External Video
 Plugin URI: http://www.parorrey.com/solutions/oembed-external-video/
 Description: This plugin converts any external mp4 url into HTML5 video tag. This plugins is needed because WordPress oEmbed only converts urls from supported oEmbed providers.
-Version: 1.5
+Version: 1.8
 Author: Ali Qureshi
 Author URI: http://www.parorrey.com
 License: GPLv3
 */
 
 wp_embed_register_handler( 'oev_html5_video', '#^(http|https)://.+\.(mp4|MP4)$#i', 'oev_embed_handler_html5_video' );
+
+function oembed_external_video_load_plugin_textdomain() {
+    load_plugin_textdomain( 'oembed-external-video', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+}
+add_action( 'plugins_loaded', 'oembed_external_video_load_plugin_textdomain' );
+
 
 function oev_embed_handler_html5_video( $matches, $attr, $url, $rawattr ) {
 	$options = get_option( 'wp_oev_settings' ); 
@@ -90,8 +96,9 @@ function oev_plugin_action_links( $links ) {
  */
 add_action('admin_menu', 'wp_oev_admin_page');
 function wp_oev_admin_page(){
+	$text_settings =  __('Settings','oembed-external-video'); 
    // add_menu_page(OEV_FULLNAME.' Settings', OEV_SHORTNAME, 'administrator', OEV_PAGE_BASENAME, 'wp_oev_admin_page_callback');
-     add_submenu_page('options-general.php',OEV_FULLNAME.' Settings', OEV_SHORTNAME, 'administrator', OEV_PAGE_BASENAME, 'wp_oev_admin_page_callback');
+     add_submenu_page('options-general.php',OEV_FULLNAME.' '.$text_settings, OEV_SHORTNAME, 'administrator', OEV_PAGE_BASENAME, 'wp_oev_admin_page_callback');
 	
 	}
 
@@ -110,13 +117,16 @@ function wp_oev_settings_validate($args){
     if(!isset($args['wp_oev_width']) || !is_numeric($args['wp_oev_width'])){
         //add a settings error because the value is invalid and make the form field blank, so that the user can enter again
         $args['wp_oev_width'] = '';
-    add_settings_error('wp_oev_settings', 'wp_oev_invalid_value', 'Please enter a valid number for width!', $type = 'error');   
+		
+		$wp_oev_invalid_width = __('Please enter a valid number for width!','oembed-external-video');
+    add_settings_error('wp_oev_settings', 'wp_oev_invalid_value', $wp_oev_invalid_width, $type = 'error');   
     }
 	
  if(!isset($args['wp_oev_height']) || !is_numeric($args['wp_oev_height'])){
         //add a settings error because the value is invalid and make the form field blank, so that the user can enter again
         $args['wp_oev_height'] = '';
-    add_settings_error('wp_oev_settings', 'wp_oev_invalid_value', 'Please enter a valid number for height!', $type = 'error');   
+	 $wp_oev_invalid_height = __('Please enter a valid number for height!','oembed-external-video');
+    add_settings_error('wp_oev_settings', 'wp_oev_invalid_value', $wp_oev_invalid_height, $type = 'error');   
     }
 
     //make sure you return the args
@@ -134,9 +144,20 @@ function wp_oev_admin_notices(){
 
 //The markup for your plugin settings page
 function wp_oev_admin_page_callback(){ 
-
+$text_settings =  __('Settings','oembed-external-video'); 
+	$text_video_width =  __('Video Width','oembed-external-video'); 
+	$text_video_width_desc =  __('Please enter video width. e.g 512','oembed-external-video');
+	$text_video_height =  __('Video Height','oembed-external-video'); 
+	$text_video_height_desc =  __('Please enter video height. e.g 384','oembed-external-video'); 
+	$text_video_controls =  __('Video Controls','oembed-external-video'); 
+	$text_video_enabled =  __('Enabled','oembed-external-video'); 
+	$text_video_autoplay =  __('Video Autoplay','oembed-external-video'); 
+	$text_video_loop =  __('Video Loop','oembed-external-video');
+	$text_video_muted =  __('Video Muted','oembed-external-video');
+	
+	
  echo   '<div class="wrap">
-    <h2>'.OEV_FULLNAME.' Settings</h2>
+    <h2>'.OEV_FULLNAME.' '.$text_settings.'</h2>
     <form action="options.php" method="post">';
 	
         settings_fields( 'wp_oev_settings' );
@@ -148,7 +169,7 @@ function wp_oev_admin_page_callback(){
 		
 echo '<table class="form-table">
             <tr>
-                <th scope="row">Video Width</th>
+                <th scope="row">'.$text_video_width.'</th>
                 <td>
                     <fieldset>
                         <label>
@@ -157,14 +178,14 @@ echo '<table class="form-table">
 	echo (isset($oev_options['wp_oev_width']) && $oev_options['wp_oev_width'] != '') ? $oev_options['wp_oev_width'] : '';
 		echo '"/>
                             <br />
-                            <span class="description">Please enter video width. e.g 512</span>
+                            <span class="description">'.$text_video_width_desc.'</span>
                         </label>
                     </fieldset>
                 </td>
             </tr>
 			
 			 <tr>
-                <th scope="row">Video Height</th>
+                <th scope="row">'.$text_video_height.'</th>
                 <td>
                     <fieldset>
                         <label>
@@ -173,20 +194,20 @@ echo '<table class="form-table">
 	echo (isset($oev_options['wp_oev_height']) && $oev_options['wp_oev_height'] != '') ? $oev_options['wp_oev_height'] : '';
 		echo '"/>
                             <br />
-                            <span class="description">Please enter video height. e.g 384</span>
+                            <span class="description">'.$text_video_height_desc.'</span>
                         </label>
                     </fieldset>
                 </td>
             </tr>
 			
 			 <tr>
-                <th scope="row">Video Controls</th>
+                <th scope="row">'.$text_video_controls.'</th>
                 <td>
                     <fieldset>
                         <label>                         
 							<input name="wp_oev_settings[wp_oev_controls]" id="wp_oev_controls" type="checkbox" value="controls"'; 
 	echo (isset($oev_options['wp_oev_controls']) && $oev_options['wp_oev_controls'] != '') ? ' checked="checked"' : '';
-		echo '/>Enabled
+		echo '/>'.$text_video_enabled.'
                        
                          
                         </label>
@@ -195,13 +216,13 @@ echo '<table class="form-table">
             </tr>
 			
 			 <tr>
-                <th scope="row">Video Autoplay</th>
+                <th scope="row">'.$text_video_autoplay.'</th>
                 <td>
                     <fieldset>
                         <label>                         
 							<input name="wp_oev_settings[wp_oev_autoplay]" id="wp_oev_autoplay" type="checkbox" value="autoplay"'; 
 	echo (isset($oev_options['wp_oev_autoplay']) && $oev_options['wp_oev_autoplay'] != '') ? ' checked="checked"' : '';
-		echo '/>Enabled
+		echo '/>'.$text_video_enabled.'
                        
                          
                         </label>
@@ -210,13 +231,13 @@ echo '<table class="form-table">
             </tr>
 			
 			 <tr>
-                <th scope="row">Video Loop</th>
+                <th scope="row">'.$text_video_loop.'</th>
                 <td>
                     <fieldset>
                         <label>                         
 							<input name="wp_oev_settings[wp_oev_loop]" id="wp_oev_loop" type="checkbox" value="loop"'; 
 	echo (isset($oev_options['wp_oev_loop']) && $oev_options['wp_oev_loop'] != '') ? ' checked="checked"' : '';
-		echo '/>Enabled
+		echo '/>'.$text_video_enabled.'
                        
                          
                         </label>
@@ -225,13 +246,13 @@ echo '<table class="form-table">
             </tr>
 			
 			 <tr>
-                <th scope="row">Video Muted</th>
+                <th scope="row">'.$text_video_muted.'</th>
                 <td>
                     <fieldset>
                         <label>                         
 							<input name="wp_oev_settings[wp_oev_muted]" id="wp_oev_controls" type="checkbox" value="muted"'; 
 	echo (isset($oev_options['wp_oev_muted']) && $oev_options['wp_oev_muted'] != '') ? ' checked="checked"' : '';
-		echo '/>Enabled
+		echo '/>'.$text_video_enabled.'
                        
                          
                         </label>

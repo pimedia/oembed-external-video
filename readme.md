@@ -1,17 +1,20 @@
-=== oEmbed External Video ===
-Contributors: parorrey
-Donate link: <http://www.parorrey.com>
-Tags: oEmbed, html5, video, mp4, external video
-Requires at least: 3.0
-Requires PHP: 5.3
-Tested up to: 5.0.0
-Stable tag: 1.5
-License: GPLv2 or later
-License URI: <http://www.gnu.org/licenses/gpl-2.0.html>
+# oEmbed External Video 
+**Contributors:** parorrey  
+**Donate link:** http://www.parorrey.com  
+**Tags:** oEmbed, html5, video, mp4, external video   
+**Stable tag:** 1.8  
+**Requires at least:** 4.6  
+**Requires PHP:** 5.3  
+**Tested up to:** 5.2.1  
+Text Domain: oembed-external-video
+Domain Path: /languages
+**License:** GPLv2 or later  
+**License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
-oEmbed External Video plugin converts any external mp4 url into HTML5 video tag
+oEmbed External Video plugin converts any external mp4 url into HTML5 video tag 
 
-== Description ==
+
+## Description 
 
 oEmbed External Video plugin converts any external mp4 url into HTML5 video tag. This plugins is needed because WordPress oEmbed only converts urls from supported oEmbed providers. This plugin is most useful for BuddyPress Communities where members post urls to external mp4 videos in the Group and activity feeds which automatically then get embedded.
 
@@ -19,56 +22,78 @@ To put any external mp4 video file into a post, page, BuddyPress Activity or Gro
 
 Plugin settings page allows you to change the video player width, height, controls, autoplay, loop and muted options.
 
-For details: <http://www.parorrey.com/solutions/oembed-external-video/>
+For details: http://www.parorrey.com/solutions/oembed-external-video/
 
-== Installation ==
 
--   Upload the full directory to wp-content/plugins
--   Activate plugin Tags Page in plugins administration
--   Now, if you place any external mp4 video file url as separate paragraph into post, page or BuyddyPress Activity, it will be converted into HTML5 video player in the browser.
--   Use 'oEmbed Video' Settings page to change the video player width, height, controls, autoplay, loop and muted options.
+## Installation 
 
-== Screenshots ==
+* Upload the full directory to wp-content/plugins
+* Activate plugin Tags Page in plugins administration
+* Now, if you place any external mp4 video file url as separate paragraph into post, page or BuyddyPress Activity, it will be converted into HTML5 video player in the browser.
+* Use 'oEmbed Video' Settings page to change the video player width, height, controls, autoplay, loop and muted options.
 
-1.  URL to mp4 video file into the post/page
-2.  URL to mp4 video file in the BuddyPress Activity feed
-3.  mp4 video being displayed in the BuddyPress Activity feed
-4.  Plugin settings page
 
-== Changelog ==
+## Screenshots 
+### 1. URL to mp4 video file into the post/page
+![URL to mp4 video file into the post/page](https://ps.w.org/oembed-external-video/assets/screenshot-1.png)
 
-= 1.5 =
+### 2. URL to mp4 video file in the BuddyPress Activity feed
+![URL to mp4 video file in the BuddyPress Activity feed](https://ps.w.org/oembed-external-video/assets/screenshot-2.png)
 
--   updated for wordpress version 5.0.0
+### 3. mp4 video being displayed in the BuddyPress Activity feed
+![mp4 video being displayed in the BuddyPress Activity feed](https://ps.w.org/oembed-external-video/assets/screenshot-3.png)
 
-= 1.4 =
+### 4. Plugin settings page
+![Plugin settings page](https://ps.w.org/oembed-external-video/assets/screenshot-4.png)
 
--   updated for banners and documentation
 
-= 1.3 =
 
--   version compatibility check and update
+## Changelog 
 
-= 1.2 =
 
--   version compatibility check and update
+### 1.8 
+* updated for text-domain
 
-= 1.1 =
 
--   version compatibility check and update
+### 1.7 
+* updated for localization
 
-= 1.0 =
 
--   version compatibility check and update
+### 1.6 
+* updated for wordpress version 5.2
 
-= 0.3 =
 
--   settings screenshot added
+### 1.5 
+* updated for wordpress version 5.0.0
 
-= 0.2 =
 
--   tagging
+### 1.4 
+* updated for banners and documentation
 
-= 0.1 =
 
--   initial release
+### 1.3 
+* version compatibility check and update
+
+
+### 1.2 
+* version compatibility check and update
+
+
+### 1.1 
+* version compatibility check and update
+
+
+### 1.0 
+* version compatibility check and update
+
+
+### 0.3 
+* settings screenshot added
+
+
+### 0.2 
+* tagging
+
+
+### 0.1 
+* initial release
